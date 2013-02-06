@@ -52,27 +52,20 @@
 #define SEND_RQ(MSG) \
                 /*cout<<send_str;*/ \
   send(sock,MSG,strlen(MSG),0);
-
+  
 
 using namespace std;
 //<exe> hostname api parameters
 int request (char* hostname, char* api, char* parameters, string& message)
 {
 
-	#ifdef WIN_OS
-	{
-		WSADATA	WsaData;
-		WSAStartup (0x0101, &WsaData);
-	}
-	#endif
-
-    sockaddr_in       sin;
+	sockaddr_in       sin;
     int sock = socket (AF_INET, SOCK_STREAM, 0);
     if (sock == -1) {
 		return -100;
 	}
     sin.sin_family = AF_INET;
-    sin.sin_port = htons( (unsigned short)80);
+    sin.sin_port = htons( (unsigned short)90);
 
     struct hostent * host_addr = gethostbyname(hostname);
     if(host_addr==NULL) {
